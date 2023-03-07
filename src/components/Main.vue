@@ -56,9 +56,12 @@ export default {
 <template>
   <main>
     <div class="container">
-      <div class="grid">
-        <CardFilm v-for="film in store.films" :key="film.id" :film="film" />
-      </div>
+      <section class="films">
+        <h3 v-if="(store.films.length !== 0)">Films</h3>
+        <div class="grid">
+          <CardFilm v-for="film in store.films" :key="film.id" :film="film" />
+        </div>
+      </section>
     </div>
   </main>
 </template>
@@ -75,5 +78,15 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px 10px;
+}
+
+.films {
+  text-align: center;
+
+  h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: sandybrown;
+  }
 }
 </style>
