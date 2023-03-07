@@ -1,6 +1,11 @@
 <script>
+import CardFilm from './CardFilm.vue';
+
 export default {
 
+  components: {
+    CardFilm
+  }
 }
 </script>
 
@@ -8,12 +13,7 @@ export default {
   <main>
     <div class="container">
       <div class="grid">
-        <div class="card">
-          <span class="title">Titolo</span>
-          <span class="original-title">Titolo Originale</span>
-          <span class="language">Lingua</span>
-          <span class="vote">Voto</span>
-        </div>
+        <CardFilm />
       </div>
     </div>
   </main>
@@ -30,20 +30,5 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px 10px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border: 1px solid white;
-
-  .title {
-    font-weight: bold;
-  }
-
-  .original-title {
-    font-style: italic;
-  }
 }
 </style>
