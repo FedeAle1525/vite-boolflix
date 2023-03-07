@@ -45,7 +45,7 @@ export default {
   <main>
     <div class="container">
       <div class="grid">
-        <CardFilm />
+        <CardFilm v-for="film in store.films" :key="film.id" :film="film" />
       </div>
     </div>
   </main>
