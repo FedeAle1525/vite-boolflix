@@ -1,6 +1,13 @@
 <script>
+import store from '../store';
+
 export default {
 
+  data() {
+    return {
+      store
+    }
+  }
 }
 </script>
 
@@ -10,8 +17,8 @@ export default {
       <h2>BoolFlix</h2>
 
       <div class="search">
-        <input type="text" placeholder="Ricerca per Nome">
-        <input type="button" value="Ricerca">
+        <input type="text" placeholder="Ricerca per Nome" v-model="store.queryName">
+        <!-- <input type="button" value="Ricerca"> -->
       </div>
     </div>
   </header>

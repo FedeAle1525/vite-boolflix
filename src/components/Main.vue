@@ -33,9 +33,21 @@ export default {
     }
   },
 
-  mounted() {
-    this.searchFilms();
+  computed: {
+    queryName() {
+      return this.store.queryName
+    }
+  },
+
+  watch: {
+    queryName() {
+      this.searchFilms();
+    }
   }
+
+  // mounted() {
+  //   this.searchFilms();
+  // }
 
 }
 </script>
