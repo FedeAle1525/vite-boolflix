@@ -1,15 +1,18 @@
 <script>
+import Header from './components/Header.vue';
+
 export default {
 
+  components: {
+    Header
+  }
 }
 </script>
 
 <template>
-  <div>
-    APP
-  </div>
+  <Header />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use './style/general.scss';
 </style>
