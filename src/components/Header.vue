@@ -5,17 +5,24 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h2>BoolFlix</h2>
+  <header>
+    <div class="container">
+      <h2>BoolFlix</h2>
 
-    <div class="search">
-      <input type="text" placeholder="Ricerca per Nome">
-      <input type="button" value="Ricerca">
+      <div class="search">
+        <input type="text" placeholder="Ricerca per Nome">
+        <input type="button" value="Ricerca">
+      </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>
+header {
+  background-color: rgb(111, 111, 111);
+  color: yellow;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
