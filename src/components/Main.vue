@@ -27,7 +27,9 @@ export default {
         }
       }).then((resp) => {
         this.store.films = resp.data.results;
-        console.log(resp.data.results);
+        // console.log(resp.data.results);
+      }).catch((error) => {
+        this.store.films = '';
       })
     }
   },
