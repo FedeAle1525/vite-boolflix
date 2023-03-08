@@ -17,7 +17,7 @@ export default {
 
   methods: {
     searchFilms() {
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=088f7fa18f717fff2fc5bf18e9e57aab', {
+      axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: store.apiKey,
           language: store.language,
@@ -25,11 +25,10 @@ export default {
           page: store.page,
           include_adults: store.adults
         }
+      }).then((resp) => {
+        this.store.films = resp.data.results;
+        console.log(resp.data.results);
       })
-        .then((resp) => {
-          this.store.films = resp.data.results;
-          console.log(resp.data.results);
-        })
     }
   },
 
@@ -81,12 +80,13 @@ main {
 }
 
 .films {
-  text-align: center;
+  // text-align: center;
 
   h3 {
     font-size: 32px;
     margin-bottom: 20px;
     color: sandybrown;
+    text-align: center;
   }
 }
 </style>
