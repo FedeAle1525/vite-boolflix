@@ -4,6 +4,9 @@ const store = reactive({
   // Array di Films
   films: [],
 
+  // Array di Serie TV
+  series: [],
+
   // Input Search
   queryName: '',
 

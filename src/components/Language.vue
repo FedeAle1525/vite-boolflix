@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .language>span {
-  color: aqua;
+  color: yellow;
   text-decoration: underline;
 }
 </style>

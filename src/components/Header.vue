@@ -20,6 +20,7 @@ export default {
     searchName() {
       if (this.searchName === '') {
         this.store.films = '';
+        this.store.series = '';
       }
     }
   }

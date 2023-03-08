@@ -2,11 +2,13 @@
 import axios from 'axios';
 import store from '../store';
 import CardFilm from './CardFilm.vue';
+import CardSerie from './CardSerie.vue'
 
 export default {
 
   components: {
-    CardFilm
+    CardFilm,
+    CardSerie
   },
 
   data() {
@@ -31,6 +33,22 @@ export default {
       }).catch((error) => {
         this.store.films = '';
       })
+    },
+
+    searchSeries() {
+      axios.get('https://api.themoviedb.org/3/search/tv', {
+        params: {
+          api_key: store.apiKey,
+          language: store.language,
+          page: store.page,
+          query: store.queryName,
+          include_adults: store.adults
+        }
+      }).then((resp) => {
+        this.store.series = resp.data.results;
+      }).catch((error) => {
+        this.store.series = '';
+      })
     }
   },
 
@@ -43,6 +61,8 @@ export default {
   watch: {
     queryName() {
       this.searchFilms();
+
+      this.searchSeries();
     }
   }
 
@@ -57,10 +77,19 @@ export default {
 <template>
   <main>
     <div class="container">
+      <!-- Sezione Film -->
       <section class="films">
         <h3 v-if="(store.films.length !== 0)">Films</h3>
         <div class="grid">
           <CardFilm v-for="film in store.films" :key="film.id" :film="film" />
+        </div>
+      </section>
+
+      <!-- Sezione Serie TV -->
+      <section class="series">
+        <h3 v-if="(store.series.length !== 0)">Serie TV</h3>
+        <div class="grid">
+          <CardSerie v-for="serie in store.series" :key="serie.id" :serie="serie" />
         </div>
       </section>
     </div>
@@ -82,12 +111,26 @@ main {
 }
 
 .films {
-  // text-align: center;
+  padding: 20px 20px;
+  background-color: rgb(24, 36, 33);
 
   h3 {
     font-size: 32px;
     margin-bottom: 20px;
     color: sandybrown;
+    text-align: center;
+  }
+}
+
+.series {
+  margin-top: 30px;
+  padding: 20px 20px;
+  background-color: rgb(24, 36, 33);
+
+  h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: salmon;
     text-align: center;
   }
 }

@@ -4,7 +4,7 @@ import Language from './Language.vue';
 export default {
 
   props: {
-    film: {
+    serie: {
       type: Object,
       required: true
     }
@@ -20,18 +20,18 @@ export default {
   <div class="card">
     <span class="title">
       <span>Titolo:</span>
-      "{{ film.title }}"
+      "{{ serie.name }}"
     </span>
     <span class="original-title">
       <span>Titolo Originale:</span>
-      "{{ film.original_title }}"
+      "{{ serie.original_name }}"
     </span>
 
-    <Language :language="film.original_language" />
+    <Language :language="serie.original_language" />
 
     <span class="vote">
       <span>Voto:</span>
-      {{ film.vote_average }}
+      {{ serie.vote_average }}
     </span>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
 }
 
 span>span {
-  color: aqua;
+  color: greenyellow;
   text-decoration: underline;
 }
 </style>
