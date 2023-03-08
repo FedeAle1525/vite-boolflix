@@ -1,5 +1,7 @@
 <script>
 import Language from './Language.vue';
+import store from '../store';
+
 
 export default {
 
@@ -12,12 +14,33 @@ export default {
 
   components: {
     Language
+  },
+
+  data() {
+    return {
+      store,
+      urlImg: ''
+    }
+  },
+
+  methods: {
+    generateUrlImg() {
+      const stringUrl = this.store.basePath + this.store.widthImg + this.serie.backdrop_path;
+      return stringUrl;
+    }
   }
 }
 </script>
 
 <template>
   <div class="card">
+
+    <div class="no-img" v-if="this.serie.backdrop_path === null">
+      <span>NO IMAGE</span>
+    </div>
+
+    <img :src="generateUrlImg()" alt="" v-else>
+
     <span class="title">
       <span>Titolo:</span>
       "{{ serie.name }}"
@@ -42,6 +65,13 @@ export default {
   flex-direction: column;
   gap: 5px;
   border: 1px solid white;
+
+  .no-img {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .title {
     font-weight: bold;
