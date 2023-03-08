@@ -14,6 +14,14 @@ export default {
     setQueryName() {
       this.store.queryName = this.searchName;
     }
+  },
+
+  watch: {
+    searchName() {
+      if (this.searchName === '') {
+        this.store.films = '';
+      }
+    }
   }
 }
 </script>
