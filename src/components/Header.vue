@@ -5,7 +5,14 @@ export default {
 
   data() {
     return {
-      store
+      store,
+      searchName: ''
+    }
+  },
+
+  methods: {
+    setQueryName() {
+      this.store.queryName = this.searchName;
     }
   }
 }
@@ -17,8 +24,8 @@ export default {
       <h2>BoolFlix</h2>
 
       <div class="search">
-        <input type="text" placeholder="Ricerca per Nome" v-model="store.queryName">
-        <!-- <input type="button" value="Ricerca"> -->
+        <input type="text" placeholder="Ricerca per Nome" v-model="searchName" @keyup.enter="setQueryName()">
+        <input type="button" value="Ricerca" @click="setQueryName()">
       </div>
     </div>
   </header>
