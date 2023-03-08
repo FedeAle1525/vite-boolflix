@@ -17,6 +17,15 @@ export default {
     Image
   },
 
+  methods: {
+
+    convertVote() {
+      const vote = this.film.vote_average;
+      const voteConverted = Math.floor(vote / 2);
+      return voteConverted;
+    }
+  }
+
 }
 </script>
 
@@ -38,7 +47,7 @@ export default {
 
     <span class="vote">
       <span>Voto:</span>
-      {{ film.vote_average }}
+      {{ convertVote() }}
     </span>
   </div>
 </template>

@@ -28,6 +28,11 @@ export default {
           include_adults: store.adults
         }
       }).then((resp) => {
+        // resp.data.results.forEach(el => {
+        //   const vote = el.vote_average;
+        //   el.vote_average = this.convertVote(vote);
+        //   // console.log(vote, el.vote_average);
+        // });
         this.store.films = resp.data.results;
         // console.log(resp.data.results);
       }).catch((error) => {
@@ -45,11 +50,20 @@ export default {
           include_adults: store.adults
         }
       }).then((resp) => {
+        // resp.data.results.forEach(el => {
+        //   const vote = el.vote_average;
+        //   el.vote_average = this.convertVote(vote);
+        // });
         this.store.series = resp.data.results;
       }).catch((error) => {
         this.store.series = '';
       })
-    }
+    },
+
+    // convertVote(vote) {
+    //   const voteConverted = Math.floor(vote / 2);
+    //   return voteConverted;
+    // }
   },
 
   computed: {

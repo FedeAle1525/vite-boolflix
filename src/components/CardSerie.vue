@@ -18,6 +18,15 @@ export default {
     Image
   },
 
+  methods: {
+
+    convertVote() {
+      const vote = this.serie.vote_average;
+      const voteConverted = Math.floor(vote / 2);
+      return voteConverted;
+    }
+  }
+
 }
 </script>
 
@@ -39,7 +48,7 @@ export default {
 
     <span class="vote">
       <span>Voto:</span>
-      {{ serie.vote_average }}
+      {{ convertVote() }}
     </span>
   </div>
 </template>
