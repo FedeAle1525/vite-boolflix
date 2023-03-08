@@ -55,6 +55,14 @@ export default {
   computed: {
     queryName() {
       return this.store.queryName
+    },
+
+    getFilms() {
+      return this.store.films;
+    },
+
+    getSeries() {
+      return this.store.series;
     }
   },
 
@@ -79,17 +87,17 @@ export default {
     <div class="container">
       <!-- Sezione Film -->
       <section class="films">
-        <h3 v-if="(store.films.length !== 0)">Films</h3>
+        <h3 v-if="(getFilms.length !== 0)">Films</h3>
         <div class="grid">
-          <CardFilm v-for="film in store.films" :key="film.id" :film="film" />
+          <CardFilm v-for="film in getFilms" :key="film.id" :film="film" />
         </div>
       </section>
 
       <!-- Sezione Serie TV -->
       <section class="series">
-        <h3 v-if="(store.series.length !== 0)">Serie TV</h3>
+        <h3 v-if="(getSeries.length !== 0)">Serie TV</h3>
         <div class="grid">
-          <CardSerie v-for="serie in store.series" :key="serie.id" :serie="serie" />
+          <CardSerie v-for="serie in getSeries" :key="serie.id" :serie="serie" />
         </div>
       </section>
     </div>
