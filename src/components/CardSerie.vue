@@ -2,10 +2,16 @@
 import Language from './Language.vue';
 import Image from './Image.vue';
 import Vote from './Vote.vue';
-
-
+import axios from 'axios';
+import store from '../store';
 
 export default {
+
+  data() {
+    return {
+      store,
+    }
+  },
 
   props: {
     serie: {
@@ -19,6 +25,18 @@ export default {
     Image,
     Vote
   },
+
+  computed: {
+    getGenreIds() {
+      return this.serie.genre_ids;
+    },
+
+    getGenresList() {
+      return this.store.genresSeries;
+    }
+  },
+
+
 
 }
 </script>

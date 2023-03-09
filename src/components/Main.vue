@@ -60,10 +60,30 @@ export default {
       })
     },
 
-    // convertVote(vote) {
-    //   const voteConverted = Math.floor(vote / 2);
-    //   return voteConverted;
-    // }
+    getGenresSeriesFromServer() {
+      axios.get('https://api.themoviedb.org/3/genre/tv/list', {
+        params: {
+          api_key: this.store.apiKey,
+          language: this.store.language
+        }
+      }).then((resp) => {
+        this.store.genresSeries = resp.data.genres;
+        // console.log('Generi Serie;', this.store.genresSeries);
+      })
+    },
+
+    getGenresFilmsFromServer() {
+      axios.get('https://api.themoviedb.org/3/genre/movie/list', {
+        params: {
+          api_key: this.store.apiKey,
+          language: this.store.language
+        }
+      }).then((resp) => {
+        this.store.genresFilms = resp.data.genres;
+        // console.log('Generi Film;', this.store.genresFilms);
+      })
+    },
+
   },
 
   computed: {
@@ -86,6 +106,12 @@ export default {
 
       this.searchSeries();
     }
+  },
+
+  mounted() {
+    this.getGenresSeriesFromServer();
+
+    this.getGenresFilmsFromServer();
   }
 
   // mounted() {

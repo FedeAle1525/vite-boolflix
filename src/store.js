@@ -7,6 +7,12 @@ const store = reactive({
   // Array di Serie TV
   series: [],
 
+  // Array di Generi per le Serie TV
+  genresSeries: [],
+
+  // Array di Generi per i Film
+  genresFilms: [],
+
   // Input Search
   queryName: '',
 

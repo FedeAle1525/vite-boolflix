@@ -51,8 +51,7 @@ export default {
           }
         });
 
-        // this.listActors = resp.data.cast;
-        console.log(this.listActors);
+        // console.log(this.listActors);
       })
     }
   },
