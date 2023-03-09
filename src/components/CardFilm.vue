@@ -25,7 +25,7 @@ export default {
 <template>
   <div class="card">
 
-    <Image :finalPath="film.backdrop_path" class="card-img" />
+    <Image :finalPath="film.poster_path" class="card-img" />
 
     <div class="card-info">
 
@@ -52,8 +52,10 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
   border: 1px solid white;
+  // height: 400px;
 
 }
 

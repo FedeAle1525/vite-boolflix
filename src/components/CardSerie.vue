@@ -26,7 +26,7 @@ export default {
 <template>
   <div class="card">
 
-    <Image :finalPath="serie.backdrop_path" class="card-img" />
+    <Image :finalPath="serie.poster_path" class="card-img" />
 
     <div class="card-info">
       <span class="title">
@@ -51,6 +51,7 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
   border: 1px solid white;
 }
