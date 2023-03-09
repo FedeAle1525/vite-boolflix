@@ -2,9 +2,18 @@
 import Language from './Language.vue';
 import Image from './Image.vue'
 import Vote from './Vote.vue'
+import axios from 'axios';
+import store from '../store';
 
 
 export default {
+
+  data() {
+    return {
+      listActors: [],
+      store
+    }
+  },
 
   props: {
     film: {
@@ -18,6 +27,37 @@ export default {
     Image,
     Vote
   },
+
+  computed: {
+    getFilmId() {
+      return this.film.id;
+    }
+  },
+
+  methods: {
+    searchActors() {
+      axios.get(`https://api.themoviedb.org/3/movie/${this.getFilmId}/credits`, {
+        params: {
+          api_key: this.store.apiKey,
+          language: this.store.language
+        }
+      }).then((resp) => {
+
+        resp.data.cast.forEach(person => {
+          if (person.known_for_department === 'Acting' && (this.listActors.length < 5)) {
+            this.listActors.push(person);
+          }
+        });
+
+        // this.listActors = resp.data.cast;
+        console.log(this.listActors);
+      })
+    }
+  },
+
+  mounted() {
+    this.searchActors();
+  }
 
 }
 </script>
@@ -41,6 +81,12 @@ export default {
       <Language :language="film.original_language" />
 
       <Vote :vote="film.vote_average" />
+
+      <span class="actors">Attori Principali:</span>
+      <ul class="list-actors" v-if="listActors.length !== 0">
+        <li v-for="actor in listActors"> {{ actor.original_name }}</li>
+      </ul>
+      <span class="no-actors" v-else>Non Presenti</span>
 
     </div>
 
@@ -69,7 +115,7 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    justify-content: center;
+    // justify-content: center;
     gap: 5px;
 
     .title {
@@ -90,5 +136,20 @@ export default {
 .original-title>span {
   color: aqua;
   text-decoration: underline;
+}
+
+.actors {
+  color: aqua;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.list-actors {
+  list-style-type: circle;
+  padding-left: 25px;
+}
+
+.no-actors {
+  text-transform: uppercase;
 }
 </style>
