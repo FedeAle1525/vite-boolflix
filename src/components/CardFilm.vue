@@ -2,6 +2,7 @@
 import Language from './Language.vue';
 import Image from './Image.vue'
 import Vote from './Vote.vue'
+import ActorsList from './ActorsList.vue';
 import axios from 'axios';
 import store from '../store';
 
@@ -25,7 +26,8 @@ export default {
   components: {
     Language,
     Image,
-    Vote
+    Vote,
+    ActorsList
   },
 
   computed: {
@@ -82,11 +84,7 @@ export default {
 
       <Vote :vote="film.vote_average" />
 
-      <span class="actors">Attori Principali:</span>
-      <ul class="list-actors" v-if="listActors.length !== 0">
-        <li v-for="actor in listActors"> {{ actor.original_name }}</li>
-      </ul>
-      <span class="no-actors" v-else>Non Presenti</span>
+      <ActorsList :actors="listActors" />
 
     </div>
 
@@ -136,20 +134,5 @@ export default {
 .original-title>span {
   color: aqua;
   text-decoration: underline;
-}
-
-.actors {
-  color: aqua;
-  text-decoration: underline;
-  margin-top: 10px;
-}
-
-.list-actors {
-  list-style-type: circle;
-  padding-left: 25px;
-}
-
-.no-actors {
-  text-transform: uppercase;
 }
 </style>
