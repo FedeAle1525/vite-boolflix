@@ -1,6 +1,7 @@
 <script>
 import Language from './Language.vue';
 import Image from './Image.vue'
+import Vote from './Vote.vue'
 
 
 export default {
@@ -14,17 +15,9 @@ export default {
 
   components: {
     Language,
-    Image
+    Image,
+    Vote
   },
-
-  computed: {
-
-    convertVote() {
-      const vote = this.film.vote_average;
-      const voteConverted = Math.floor(vote / 2);
-      return voteConverted;
-    }
-  }
 
 }
 </script>
@@ -45,12 +38,7 @@ export default {
 
     <Language :language="film.original_language" />
 
-    <span class="vote">
-      <span class="label">Voto:</span>
-      <img src="/images/star-filled.png" v-for="n in convertVote">
-      <img src="/images/star-empty.png" v-for="n in (5 - convertVote)">
-      <!-- <span> {{ convertVote }}</span> -->
-    </span>
+    <Vote :vote="film.vote_average" />
   </div>
 </template>
 
@@ -72,13 +60,8 @@ export default {
 }
 
 .title>span,
-.original-title>span,
-.vote>label {
+.original-title>span {
   color: aqua;
   text-decoration: underline;
-}
-
-.vote>img {
-  width: 20px;
 }
 </style>
