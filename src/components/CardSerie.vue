@@ -26,20 +26,24 @@ export default {
 <template>
   <div class="card">
 
-    <Image :finalPath="serie.backdrop_path" />
+    <Image :finalPath="serie.backdrop_path" class="card-img" />
 
-    <span class="title">
-      <span>Titolo:</span>
-      "{{ serie.name }}"
-    </span>
-    <span class="original-title">
-      <span>Titolo Originale:</span>
-      "{{ serie.original_name }}"
-    </span>
+    <div class="card-info">
+      <span class="title">
+        <span>Titolo:</span>
+        "{{ serie.name }}"
+      </span>
+      <span class="original-title">
+        <span>Titolo Originale:</span>
+        "{{ serie.original_name }}"
+      </span>
 
-    <Language :language="serie.original_language" />
+      <Language :language="serie.original_language" />
 
-    <Vote :vote="serie.vote_average" />
+      <Vote :vote="serie.vote_average" />
+
+    </div>
+
   </div>
 </template>
 
@@ -49,14 +53,33 @@ export default {
   flex-direction: column;
   gap: 5px;
   border: 1px solid white;
+}
 
-  .title {
-    font-weight: bold;
+.card:hover {
+
+  .card-img {
+    display: none;
   }
 
-  .original-title {
-    font-style: italic;
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 5px;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .original-title {
+      font-style: italic;
+    }
   }
+}
+
+.card-info {
+  display: none;
 }
 
 .title>span,

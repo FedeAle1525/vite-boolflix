@@ -25,20 +25,26 @@ export default {
 <template>
   <div class="card">
 
-    <Image :finalPath="film.backdrop_path" />
+    <Image :finalPath="film.backdrop_path" class="card-img" />
 
-    <span class="title">
-      <span>Titolo:</span>
-      "{{ film.title }}"
-    </span>
-    <span class="original-title">
-      <span>Titolo Originale:</span>
-      "{{ film.original_title }}"
-    </span>
+    <div class="card-info">
 
-    <Language :language="film.original_language" />
+      <span class="title">
+        <span>Titolo:</span>
+        "{{ film.title }}"
+      </span>
+      <span class="original-title">
+        <span>Titolo Originale:</span>
+        "{{ film.original_title }}"
+      </span>
 
-    <Vote :vote="film.vote_average" />
+      <Language :language="film.original_language" />
+
+      <Vote :vote="film.vote_average" />
+
+    </div>
+
+
   </div>
 </template>
 
@@ -49,14 +55,33 @@ export default {
   gap: 5px;
   border: 1px solid white;
 
+}
 
-  .title {
-    font-weight: bold;
+.card:hover {
+
+  .card-img {
+    display: none;
   }
 
-  .original-title {
-    font-style: italic;
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 5px;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .original-title {
+      font-style: italic;
+    }
   }
+}
+
+.card-info {
+  display: none;
 }
 
 .title>span,
