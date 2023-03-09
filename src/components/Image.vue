@@ -15,7 +15,7 @@ export default {
     }
   },
 
-  methods: {
+  computed: {
     generateUrlImg() {
       const stringUrl = this.store.basePath + this.store.widthImg + this.finalPath;
       return stringUrl;
@@ -29,7 +29,7 @@ export default {
     <span>NO IMAGE</span>
   </div>
 
-  <img :src="generateUrlImg()" alt="" v-else>
+  <img :src="generateUrlImg" alt="" v-else>
 </template>
 
 <style lang="scss" scoped>

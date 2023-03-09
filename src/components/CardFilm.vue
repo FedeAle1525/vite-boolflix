@@ -17,7 +17,7 @@ export default {
     Image
   },
 
-  methods: {
+  computed: {
 
     convertVote() {
       const vote = this.film.vote_average;
@@ -46,8 +46,10 @@ export default {
     <Language :language="film.original_language" />
 
     <span class="vote">
-      <span>Voto:</span>
-      {{ convertVote() }}
+      <span class="label">Voto:</span>
+      <img src="/images/star-filled.png" v-for="n in convertVote">
+      <img src="/images/star-empty.png" v-for="n in (5 - convertVote)">
+      <!-- <span> {{ convertVote }}</span> -->
     </span>
   </div>
 </template>
@@ -69,8 +71,14 @@ export default {
   }
 }
 
-span>span {
+.title>span,
+.original-title>span,
+.vote>label {
   color: aqua;
   text-decoration: underline;
+}
+
+.vote>img {
+  width: 20px;
 }
 </style>

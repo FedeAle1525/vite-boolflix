@@ -18,7 +18,7 @@ export default {
     Image
   },
 
-  methods: {
+  computed: {
 
     convertVote() {
       const vote = this.serie.vote_average;
@@ -47,8 +47,11 @@ export default {
     <Language :language="serie.original_language" />
 
     <span class="vote">
-      <span>Voto:</span>
-      {{ convertVote() }}
+      <span class="label">Voto:</span>
+      <span class="label">Voto:</span>
+      <img src="/images/star-filled.png" v-for="n in convertVote">
+      <img src="/images/star-empty.png" v-for="n in (5 - convertVote)">
+      <!-- <span> {{ convertVote }}</span> -->
     </span>
   </div>
 </template>
@@ -69,8 +72,14 @@ export default {
   }
 }
 
-span>span {
-  color: greenyellow;
+.title>span,
+.original-title>span,
+.vote>.label {
+  color: aqua;
   text-decoration: underline;
+}
+
+.vote>img {
+  width: 20px;
 }
 </style>
