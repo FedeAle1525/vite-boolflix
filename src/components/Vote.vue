@@ -21,8 +21,8 @@ export default {
 <template>
   <span class="vote">
     <span class="label">Voto:</span>
-    <img src="/images/star-filled.png" v-for="n in convertVote">
-    <img src="/images/star-empty.png" v-for="n in (5 - convertVote)">
+    <img src="/images/star-filled.png" v-for="n in convertVote" :key="n">
+    <img src="/images/star-empty.png" v-for="n in (5 - convertVote)" :key="n + 5">
     <!-- <span> {{ convertVote }}</span> -->
   </span>
 </template>
