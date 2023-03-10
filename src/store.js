@@ -16,6 +16,12 @@ const store = reactive({
   // Input Search
   queryName: '',
 
+  // Select Genere Serie
+  filterGenreSerie: '',
+
+  // Select Genere Film
+  filterGenreFilm: '',
+
   // Parametri costanti per Chiamata Server
   apiKey: '088f7fa18f717fff2fc5bf18e9e57aab',
   language: 'it-IT',

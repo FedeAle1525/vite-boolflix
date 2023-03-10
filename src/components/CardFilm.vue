@@ -33,7 +33,20 @@ export default {
   computed: {
     getFilmId() {
       return this.film.id;
+    },
+
+    filterGenre() {
+      return this.store.filterGenreFilm;
+    },
+
+  },
+
+  watch: {
+
+    filterGenre() {
+      this.isGenreIncluse();
     }
+
   },
 
   methods: {
@@ -53,18 +66,34 @@ export default {
 
         // console.log(this.listActors);
       })
+    },
+
+    isGenreIncluse() {
+      if (this.film.genre_ids.includes(this.filterGenre)) {
+        console.log(true);
+        console.log(this.film.genre_ids);
+        console.log(this.filterGenre);
+        return true;
+      } else {
+        console.log(false);
+        console.log(this.film.genre_ids);
+        console.log(this.filterGenre);
+        return false;
+      }
     }
   },
 
+
   mounted() {
     this.searchActors();
-  }
+  },
+
 
 }
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :class="isGenreIncluse() ? '' : 'hidden'">
 
     <Image :finalPath="film.poster_path" class="card-img" />
 
@@ -92,6 +121,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.card.hidden {
+  display: none;
+}
+
 .card {
   display: flex;
   flex-direction: column;

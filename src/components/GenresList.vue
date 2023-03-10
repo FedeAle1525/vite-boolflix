@@ -36,7 +36,7 @@ export default {
         })
       });
 
-      console.log('Lista Generi Serie:', genresSerieList);
+      // console.log('Lista Generi Serie:', genresSerieList);
 
       return genresSerieList;
     }

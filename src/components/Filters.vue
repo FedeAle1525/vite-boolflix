@@ -24,21 +24,21 @@ export default {
 <template>
   <div class="filters">
 
-    <div class="serie-tv">
-      <span>Serie TV</span>
-      <select id="">
+    <div class="films">
+      <span>Film</span>
+      <select id="" v-model="store.filterGenreFilm">
         <option value="" hidden>Filtra per Genere</option>
         <option value="none">Nessun Genere</option>
-        <option :value="genre.name" v-for="(genre, i) in getGenresSeries" :key="i"> {{ genre.name }}</option>
+        <option :value="genre.id" v-for="(genre, i) in getGenresFilms" :key="i"> {{ genre.name }}</option>
       </select>
     </div>
 
-    <div class="films">
-      <span>Film</span>
-      <select id="">
+    <div class="serie-tv">
+      <span>Serie TV</span>
+      <select id="" v-model="store.filterGenreSerie">
         <option value="" hidden>Filtra per Genere</option>
         <option value="none">Nessun Genere</option>
-        <option :value="genre.name" v-for="(genre, i) in getGenresFilms" :key="i"> {{ genre.name }}</option>
+        <option :value="genre.id" v-for="(genre, i) in getGenresSeries" :key="i"> {{ genre.name }}</option>
       </select>
     </div>
 
