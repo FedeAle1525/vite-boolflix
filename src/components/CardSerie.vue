@@ -2,7 +2,7 @@
 import Language from './Language.vue';
 import Image from './Image.vue';
 import Vote from './Vote.vue';
-import axios from 'axios';
+import GenresList from './GenresList.vue';
 import store from '../store';
 
 export default {
@@ -23,38 +23,9 @@ export default {
   components: {
     Language,
     Image,
-    Vote
+    Vote,
+    GenresList
   },
-
-  computed: {
-    getGenreIds() {
-      return this.serie.genre_ids;
-    },
-
-    getGenresList() {
-      return this.store.genresSeries;
-    },
-
-    genresList() {
-      const genresSerieList = [];
-
-      this.getGenreIds.forEach(genSerie => {
-        this.getGenresList.forEach(genList => {
-          if (genSerie === genList.id) {
-            genresSerieList.push(genList.name);
-          }
-        })
-      });
-
-      console.log('Lista Generi Serie:', genresSerieList);
-
-      return genresSerieList;
-    }
-  },
-
-  mounted() {
-    this.genresList;
-  }
 
 }
 </script>
@@ -78,11 +49,7 @@ export default {
 
       <Vote :vote="serie.vote_average" />
 
-      <span class="genres">Generi:</span>
-      <ul class="list-genres" v-if="genresList.length !== 0">
-        <li v-for="genre in genresList"> {{ genre }}</li>
-      </ul>
-      <span class="no-genres" v-else>Non Presenti</span>
+      <GenresList :serie="serie" />
 
     </div>
 
@@ -128,20 +95,5 @@ export default {
 .title>span,
 .original-title>span {
   color: greenyellow;
-}
-
-.genres {
-  color: steelblue;
-  text-decoration: underline;
-  margin-top: 10px;
-}
-
-.list-genres {
-  list-style-type: circle;
-  padding-left: 25px;
-}
-
-.no-genres {
-  text-transform: uppercase;
 }
 </style>
